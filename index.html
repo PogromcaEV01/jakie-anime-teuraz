@@ -292,6 +292,37 @@
             2: 2,
             3: 1
         };
+        // --- BAZA PROFILI (Pobierana z zewnętrznych plików JSON) ---
+let profilesTable = [];
+
+// Funkcja pobierająca oba pliki i łącząca je w jedną bazę (216 profili)
+async function loadProfilesDatabase() {
+    try {
+        // Pobieramy oba pliki równolegle dla oszczędności czasu
+        const [res1, res2] = await Promise.all([
+            fetch('profiles_part1.json'),
+            fetch('profiles_part2.json') // Przygotuj ten plik w folderze
+        ]);
+
+        if (!res1.ok || !res2.ok) throw new Error("Nie udało się załadować plików bazy danych.");
+
+        const part1 = await res1.json();
+        const part2 = await res2.json();
+
+        // Łączymy 108 + 108 w jedną dużą tablicę
+        profilesTable = [...part1, ...part2];
+        console.log(`Baza załadowana pomyślnie. Liczba profili: ${profilesTable.length}`);
+        
+        // Odblokowujemy przycisk po załadowaniu bazy
+        document.getElementById('analyzeBtn').disabled = false;
+    } catch (error) {
+        console.error("Błąd ładowania bazy profili:", error);
+        alert("Błąd: Nie można załadować bazy profili. Upewnij się, że pliki JSON są w folderze i używasz serwera lokalnego (np. Live Server).");
+    }
+}
+
+// Uruchamiamy ładowanie przy starcie strony
+loadProfilesDatabase();
 
         // --- OBSŁUGA INTERFEJSU ---
         const slotBoxes = document.querySelectorAll('.slot-box');
