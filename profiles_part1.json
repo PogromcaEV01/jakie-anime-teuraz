@@ -1,0 +1,650 @@
+[
+  {
+    "name": "Czysta Komedia i Odprężenie",
+    "desc": "Idealne na poprawę humoru i głośny śmiech po ciężkim dniu.",
+    "targetWeights": { "happy": 3, "stressed": 2 },
+    "genreId": 4
+  },
+  {
+    "name": "Zastrzyk Adrenaliny",
+    "desc": "Czysta akcja, która nie pozwoli Ci się nudzić ani przez sekundę.",
+    "targetWeights": { "bored": 3, "happy": 1 },
+    "genreId": 1
+  },
+  {
+    "name": "Głęboki Melodramat",
+    "desc": "Przygotuj chusteczki. Historie, które poruszają najgłębsze struny duszy.",
+    "targetWeights": { "sad": 3, "romantic": 2 },
+    "genreId": 8
+  },
+  {
+    "name": "Psychologiczny Labirynt",
+    "desc": "Mroczne tajemnice i gęsty klimat, który zmusza do myślenia.",
+    "targetWeights": { "dark": 3, "bored": 1, "sad": 1 },
+    "genreId": 40
+  },
+  {
+    "name": "Uskrzydlający Romans",
+    "desc": "Motyle w brzuchu i urocze relacje, które rozgrzeją Twoje serce.",
+    "targetWeights": { "romantic": 3, "happy": 2 },
+    "genreId": 22
+  },
+  {
+    "name": "Mroczny Romans / Tajemnica",
+    "desc": "Miłość przeplatana z niebezpieczeństwem i nadprzyrodzoną aurą.",
+    "targetWeights": { "romantic": 3, "dark": 3 },
+    "genreId": 7
+  },
+  {
+    "name": "Okruchy Życia (Złapanie Oddechu)",
+    "desc": "Spokojne, powolne tempo, idealne na zszargane nerwy.",
+    "targetWeights": { "stressed": 3, "sad": 1 },
+    "genreId": 36
+  },
+  {
+    "name": "Epicka Przygoda Sci-Fi",
+    "desc": "Ucieczka od rzeczywistości w nieznane, fascynujące światy.",
+    "targetWeights": { "bored": 2, "dark": 1, "stressed": 1 },
+    "genreId": 24
+  },
+  {
+    "name": "Euforyczna Eksplozja",
+    "desc": "Czysta radość i feeria barw, która naładuje Cię pozytywną energią.",
+    "targetWeights": { "happy": 3 },
+    "genreId": 4
+  },
+  {
+    "name": "Słodko-Gorzka Melancholia",
+    "desc": "Piękne, choć smutne opowieści o przemijaniu i akceptacji.",
+    "targetWeights": { "sad": 3, "happy": 1 },
+    "genreId": 8
+  },
+  {
+    "name": "Leniwe Popołudnie",
+    "desc": "Niezobowiązująca rozrywka na momenty, gdy nie masz ochoty na nic ciężkiego.",
+    "targetWeights": { "bored": 3, "stressed": 1 },
+    "genreId": 36
+  },
+  {
+    "name": "Oczyszczający Płacz",
+    "desc": "Produkcje stworzone po to, by dać upust tłumionym emocjom.",
+    "targetWeights": { "stressed": 3, "sad": 3 },
+    "genreId": 8
+  },
+  {
+    "name": "Niewinna Pierwsza Miłość",
+    "desc": "Szkolne romanse pełne nieśmiałych spojrzeń i uroczych nieporozumień.",
+    "targetWeights": { "romantic": 3, "bored": 1 },
+    "genreId": 22
+  },
+  {
+    "name": "Koszmar z Głębin Umysłu",
+    "desc": "Prawdziwy horror psychologiczny, który zostawi Cię z uczuciem niepokoju.",
+    "targetWeights": { "dark": 3, "stressed": 2 },
+    "genreId": 14
+  },
+  {
+    "name": "Radosne Fantasy",
+    "desc": "Magiczne światy, w których dobro zawsze zwycięża, a przygoda czeka za rogiem.",
+    "targetWeights": { "happy": 3, "bored": 2 },
+    "genreId": 10
+  },
+  {
+    "name": "Tragiczny Bohater",
+    "desc": "Mroczne losy postaci, które muszą poświecić wszystko w imię wyższych celów.",
+    "targetWeights": { "dark": 3, "sad": 2 },
+    "genreId": 1
+  },
+  {
+    "name": "Komediodramat Romantyczny",
+    "desc": "Śmiech przez łzy w opowieściach o skomplikowanych relacjach międzyludzkich.",
+    "targetWeights": { "romantic": 2, "happy": 2, "sad": 1 },
+    "genreId": 22
+  },
+  {
+    "name": "Cyberpunkowa Beznadzieja",
+    "desc": "Wysoka technologia, niskie standardy życia i egzystencjalna pustka.",
+    "targetWeights": { "dark": 2, "bored": 2, "sad": 1 },
+    "genreId": 24
+  },
+  {
+    "name": "Sielska Prowincja",
+    "desc": "Ucieczka z głośnego miasta na spokojną, urokliwą japońską wieś.",
+    "targetWeights": { "stressed": 3 },
+    "genreId": 36
+  },
+  {
+    "name": "Detektywistyczna Szarada",
+    "desc": "Wciągające śledztwa, zwroty akcji i poszukiwanie mordercy w cieniach.",
+    "targetWeights": { "bored": 3, "dark": 1 },
+    "genreId": 7
+  },
+  {
+    "name": "Głośna Parodia",
+    "desc": "Anime, które nie bierze siebie na poważnie i wyśmiewa wszelkie schematy.",
+    "targetWeights": { "happy": 3, "bored": 1 },
+    "genreId": 4
+  },
+  {
+    "name": "Samotność w Tłumie",
+    "desc": "Kameralne studium wyobcowania i poszukiwania własnego miejsca na ziemi.",
+    "targetWeights": { "sad": 3, "stressed": 1 },
+    "genreId": 8
+  },
+  {
+    "name": "Turniejowy Zapał",
+    "desc": "Duch rywalizacji, ciężki trening i przekraczanie własnych granic.",
+    "targetWeights": { "bored": 3, "stressed": 2 },
+    "genreId": 30
+  },
+  {
+    "name": "Kojąca Muzyka Duszy",
+    "desc": "Opowieści o pasji i dźwiękach, które leczą nawet najbardziej złamane serca.",
+    "targetWeights": { "stressed": 3, "romantic": 1 },
+    "genreId": 19
+  },
+  {
+    "name": "Zakazane Uczucie",
+    "desc": "Gęsta atmosfera dramatu i miłość, która musi pokonać społeczne tematy.",
+    "targetWeights": { "romantic": 3, "stressed": 2 },
+    "genreId": 8
+  },
+  {
+    "name": "Gotycka Baśń",
+    "desc": "Mroczna estetyka, wampiry, demony i arystokratyczny, ciężki klimat.",
+    "targetWeights": { "dark": 3, "romantic": 1 },
+    "genreId": 14
+  },
+  {
+    "name": "Szalona Komedia Romantyczna",
+    "desc": "Gdy dwójka ekscentryków próbuje udowodnić sobie miłość za pomocą nauki lub spisków.",
+    "targetWeights": { "happy": 3, "romantic": 2 },
+    "genreId": 22
+  },
+  {
+    "name": "Wojenna Trauma",
+    "desc": "Brutalne realia konfliktów zbrojnych i moralne dylematy na polu bitwy.",
+    "targetWeights": { "stressed": 3, "dark": 2 },
+    "genreId": 38
+  },
+  {
+    "name": "Beztroskie Dzieciństwo",
+    "desc": "Nostalgiczny powrót do czasów, gdy największym problemem była praca domowa.",
+    "targetWeights": { "happy": 2, "stressed": 2 },
+    "genreId": 36
+  },
+  {
+    "name": "Intrygi Pałacowe",
+    "desc": "Walka o władzę, zdrady i sojusze w realiach historycznych lub fantasy.",
+    "targetWeights": { "bored": 3, "dark": 2 },
+    "genreId": 8
+  },
+  {
+    "name": "Ciepło Rodzinnego Domu",
+    "desc": "Budujące relacje między rodzicami a dziećmi, pełne ciepła i zrozumienia.",
+    "targetWeights": { "stressed": 3, "happy": 1 },
+    "genreId": 36
+  },
+  {
+    "name": "Ponura Przyszłość Mecha",
+    "desc": "Wielkie roboty i jeszcze większe dramaty egzystencjalne ich pilotów.",
+    "targetWeights": { "dark": 3, "sad": 1 },
+    "genreId": 18
+  },
+  {
+    "name": "Zwariowany Isekai",
+    "desc": "Reinkarnacja w innym świecie, ale zamiast ratować świat, bohater otwiera kawiarnię.",
+    "targetWeights": { "happy": 3, "bored": 3 },
+    "genreId": 4
+  },
+  {
+    "name": "Pożegnanie z Przyjacielem",
+    "desc": "Poruszające opowieści o stracie i pielęgnowaniu wspomnień.",
+    "targetWeights": { "sad": 3 },
+    "genreId": 8
+  },
+  {
+    "name": "Mroczne Okruchy Życia",
+    "desc": "Codzienność przedstawiona z perspektywy osób zmagających się z depresją.",
+    "targetWeights": { "sad": 2, "dark": 2, "stressed": 1 },
+    "genreId": 8
+  },
+  {
+    "name": "Adrenalina Hazardu",
+    "desc": "Gry o wysoką stawkę, gdzie liczy się spryt, blef i czytanie przeciwnika.",
+    "targetWeights": { "bored": 3, "stressed": 3 },
+    "genreId": 40
+  },
+  {
+    "name": "Dojrzały Związek",
+    "desc": "Realistyczne spojrzenie na relacje dorosłych ludzi, bez zbędnego dramatyzmu.",
+    "targetWeights": { "romantic": 3 },
+    "genreId": 22
+  },
+  {
+    "name": "Groza Nieznanego",
+    "desc": "Spotkania z bytami Lovecraftowskimi i powolne popadanie w obłęd.",
+    "targetWeights": { "dark": 3, "stressed": 3 },
+    "genreId": 14
+  },
+  {
+    "name": "Absurdalny Humor",
+    "desc": "Gagi gonią gagi, a logika dawno wyszła przez okno.",
+    "targetWeights": { "happy": 3, "stressed": 1 },
+    "genreId": 4
+  },
+  {
+    "name": "Niespełnione Nadzieje",
+    "desc": "Gdy starania nie przynoszą efektów, a bohaterowie muszą przełknąć gorycz porażki.",
+    "targetWeights": { "sad": 3, "stressed": 2 },
+    "genreId": 8
+  },
+  {
+    "name": "Eksploracja Lochów",
+    "desc": "Czysta przygoda, potwory, pułapki i zbieranie skarbów z drużyną.",
+    "targetWeights": { "bored": 3 },
+    "genreId": 1
+  },
+  {
+    "name": "Kulinarna Ekstaza",
+    "desc": "Jedzenie wyglądające tak dobrze, że zrobisz się głodny od samego patrzenia.",
+    "targetWeights": { "happy": 2, "stressed": 3 },
+    "genreId": 47
+  },
+  {
+    "name": "Miłość zza Grobu",
+    "desc": "Uczucie łączące człowieka z duchem lub istotą nadprzyrodzoną.",
+    "targetWeights": { "romantic": 3, "sad": 2 },
+    "genreId": 22
+  },
+  {
+    "name": "Bezwzględna Zemsta",
+    "desc": "Kierowany gniewem bohater eliminuje swoich wrogów jednego po drugim.",
+    "targetWeights": { "dark": 3, "bored": 2 },
+    "genreId": 1
+  },
+  {
+    "name": "Urocze Dziewczęta Robiące Urocze Rzeczy",
+    "desc": "Kluby szkolne, picie herbaty i zero stresu. Cukier w czystej postaci.",
+    "targetWeights": { "happy": 3, "stressed": 3 },
+    "genreId": 36
+  },
+  {
+    "name": "Egzystencjalny Kryzys",
+    "desc": "Kino drogi i poszukiwanie odpowiedzi na pytanie: 'kim jestem?'.",
+    "targetWeights": { "sad": 2, "bored": 1, "dark": 1 },
+    "genreId": 8
+  },
+  {
+    "name": "Szybkie Samochody",
+    "desc": "Pisk opon, wyścigi uliczne i zapach palonej gumy.",
+    "targetWeights": { "bored": 3, "stressed": 1 },
+    "genreId": 3
+  },
+  {
+    "name": "Miłość w Czasach Apokalipsy",
+    "desc": "Ostatni ludzie na ziemi i ich próba zachowania resztek człowieczeństwa.",
+    "targetWeights": { "romantic": 3, "dark": 2, "sad": 1 },
+    "genreId": 8
+  },
+  {
+    "name": "Sztuka Przetrwania",
+    "desc": "Walka z surową naturą na bezludnej wyspie lub w mroźnych górach.",
+    "targetWeights": { "stressed": 3, "bored": 2 },
+    "genreId": 1
+  },
+  {
+    "name": "Okrutne Gry Śmierci",
+    "desc": "Grupa nieznajomych zmuszona do walki na śmierć i życie przez tajemniczego mistrza gry.",
+    "targetWeights": { "dark": 3, "stressed": 3, "bored": 1 },
+    "genreId": 11
+  },
+  {
+    "name": "Szkolny Festiwal",
+    "desc": "Przygotowania do wydarzenia roku, pierwsze miłości i tętniące życiem korytarze.",
+    "targetWeights": { "happy": 3, "romantic": 1 },
+    "genreId": 36
+  },
+  {
+    "name": "Złamane Serce",
+    "desc": "Bolesne rozstania, odrzucenie i długa droga do wyleczenia emocjonalnych ran.",
+    "targetWeights": { "sad": 3, "romantic": 3 },
+    "genreId": 8
+  },
+  {
+    "name": "Trening Czyni Mistrza",
+    "desc": "Od zera do bohatera. Długie sekwencje nauki nowych technik i przezwyciężania słabości.",
+    "targetWeights": { "bored": 3, "stressed": 1 },
+    "genreId": 1
+  },
+  {
+    "name": "Zanurzenie w Naturze",
+    "desc": "Biwakowanie, łowienie ryb i podziwianie pięknie zanimowanych krajobrazów.",
+    "targetWeights": { "stressed": 3, "bored": 1 },
+    "genreId": 36
+  },
+  {
+    "name": "Trójkąt Miłosny",
+    "desc": "Dwoje rywali walczących o serce jednej osoby. Zazdrość i trudne wybory.",
+    "targetWeights": { "romantic": 3, "stressed": 2, "sad": 1 },
+    "genreId": 22
+  },
+  {
+    "name": "Mroczne Podziemie",
+    "desc": "Mafia, płatni zabójcy, brudne pieniądze i kodeks honorowy przestępców.",
+    "targetWeights": { "dark": 3, "bored": 2 },
+    "genreId": 1
+  },
+  {
+    "name": "Zwierzęcy Towarzysze",
+    "desc": "Urocze opowieści o kotach, psach i zacieśnianiu więzi ze zwierzętami.",
+    "targetWeights": { "happy": 2, "stressed": 3 },
+    "genreId": 36
+  },
+  {
+    "name": "Tragedia Historyczna",
+    "desc": "Upadek wielkich rodów i krwawe bitwy okresu Sengoku ubrane w dramat.",
+    "targetWeights": { "sad": 3, "dark": 2 },
+    "genreId": 13
+  },
+  {
+    "name": "Taktyczny Geniusz",
+    "desc": "Starcia umysłów, w których przewidywanie ruchów wroga liczy się bardziej niż siła mięśni.",
+    "targetWeights": { "bored": 3, "dark": 1 },
+    "genreId": 40
+  },
+  {
+    "name": "Klub Literacki",
+    "desc": "Rozmowy o książkach, poezji i ciche dramaty dojrzewających nastolatków.",
+    "targetWeights": { "romantic": 2, "sad": 1, "stressed": 2 },
+    "genreId": 36
+  },
+  {
+    "name": "Wampirza Arystokracja",
+    "desc": "Wieczne życie, intrygi i krwawy romans w świetle księżyca.",
+    "targetWeights": { "dark": 3, "romantic": 2 },
+    "genreId": 14
+  },
+  {
+    "name": "Kosmiczna Operetka",
+    "desc": "Epickie bitwy flotylli gwiezdnych i polityka na galaktyczną skalę.",
+    "targetWeights": { "bored": 3, "sad": 1 },
+    "genreId": 24
+  },
+  {
+    "name": "Słodki Romans z Dzieciństwa",
+    "desc": "Obietnice złożone za łebka, które po latach wreszcie mają szansę się spełnić.",
+    "targetWeights": { "romantic": 3, "happy": 3 },
+    "genreId": 22
+  },
+  {
+    "name": "Fobie i Lęki",
+    "desc": "Surrealistyczne wizje i konfrontacja z najgłębszymi lękami człowieka.",
+    "targetWeights": { "dark": 3, "stressed": 3 },
+    "genreId": 40
+  },
+  {
+    "name": "Gwiezdny Pył",
+    "desc": "Zjawiskowo piękny kosmos i relaksujące opowieści o podróżnikach.",
+    "targetWeights": { "stressed": 3, "bored": 2 },
+    "genreId": 24
+  },
+  {
+    "name": "Bolesna Prawda",
+    "desc": "Odkrycie tajemnicy, która wywraca życie bohaterów do góry nogami i niszczy relacje.",
+    "targetWeights": { "sad": 3, "stressed": 3 },
+    "genreId": 8
+  },
+  {
+    "name": "Walka z Czasem",
+    "desc": "Bomba tyka, a bohaterowie muszą rozwiązać zagadkę zanim dojdzie do katastrofy.",
+    "targetWeights": { "stressed": 3, "bored": 3 },
+    "genreId": 1
+  },
+  {
+    "name": "Sztuka Kłamstwa",
+    "desc": "Główny bohater to manipulant, który pociąga za sznurki zza kulis.",
+    "targetWeights": { "dark": 3, "bored": 2 },
+    "genreId": 40
+  },
+  {
+    "name": "Słoneczne Wakacje",
+    "desc": "Letni klimat, plaża, festiwale fajerwerków i ulotne wspomnienia.",
+    "targetWeights": { "happy": 3, "romantic": 1 },
+    "genreId": 36
+  },
+  {
+    "name": "Samotny Wilk",
+    "desc": "Najemnik z mroczną przeszłością przemierza zniszczony świat w poszukiwaniu odkupienia.",
+    "targetWeights": { "dark": 3, "sad": 2 },
+    "genreId": 1
+  },
+  {
+    "name": "Miłość i Magia",
+    "desc": "Czarodziejki, magiczne pojedynki i obrona ukochanej osoby za wszelką cenę.",
+    "targetWeights": { "romantic": 3, "bored": 2 },
+    "genreId": 10
+  },
+  {
+    "name": "Komedia Pomyłek",
+    "desc": "Seria nieporozumień prowadząca do coraz bardziej absurdalnych sytuacji.",
+    "targetWeights": { "happy": 3, "stressed": 2 },
+    "genreId": 4
+  },
+  {
+    "name": "Ostateczne Poświęcenie",
+    "desc": "Śmierć w imię ratowania przyjaciół, wyciskająca łzy z oczu widza.",
+    "targetWeights": { "sad": 3, "dark": 1 },
+    "genreId": 8
+  },
+  {
+    "name": "Cyber-Detektyw",
+    "desc": "Hakowanie mózgów, wirtualna rzeczywistość i śledztwa w sieci.",
+    "targetWeights": { "bored": 3, "dark": 2 },
+    "genreId": 24
+  },
+  {
+    "name": "Zacisze Biblioteki",
+    "desc": "Spokojne popołudnia z nosem w książkach i subtelne, powolne budowanie relacji.",
+    "targetWeights": { "stressed": 3, "romantic": 2 },
+    "genreId": 36
+  },
+  {
+    "name": "Zderzenie Światów",
+    "desc": "Zwykły człowiek wciągnięty w wielki, brutalny konflikt nadprzyrodzonych frakcji.",
+    "targetWeights": { "stressed": 3, "dark": 2, "bored": 1 },
+    "genreId": 1
+  },
+  {
+    "name": "Tsundere w Akcji",
+    "desc": "Od nienawiści do miłości. Ciągłe sprzeczki, które maskują prawdziwe uczucia.",
+    "targetWeights": { "romantic": 3, "happy": 2, "stressed": 1 },
+    "genreId": 22
+  },
+  {
+    "name": "Mrok w Szkolnej Ławce",
+    "desc": "Przemoc rówieśnicza, sekrety i gęsta atmosfera zaszczucia.",
+    "targetWeights": { "dark": 3, "stressed": 3, "sad": 2 },
+    "genreId": 8
+  },
+  {
+    "name": "Eksplozja Słodyczy",
+    "desc": "Chibi postacie i uroczy humor, który sprawi, że zapomnisz o całym stresie.",
+    "targetWeights": { "happy": 3, "stressed": 3 },
+    "genreId": 4
+  },
+  {
+    "name": "Niespełniona Obietnica",
+    "desc": "Bohaterowie rozdzieleni przez los, żyjący wspomnieniem danego dawno słowa.",
+    "targetWeights": { "sad": 3, "romantic": 2 },
+    "genreId": 8
+  },
+  {
+    "name": "Szalony Naukowiec",
+    "desc": "Podróże w czasie, paradoksy i walka z nieuniknionym przeznaczeniem.",
+    "targetWeights": { "bored": 3, "stressed": 2, "dark": 1 },
+    "genreId": 24
+  },
+  {
+    "name": "Melodia Deszczu",
+    "desc": "Klimatyczne, wyciszające anime idealne do oglądania w deszczowy wieczór.",
+    "targetWeights": { "stressed": 3, "sad": 1 },
+    "genreId": 36
+  },
+  {
+    "name": "Dramat w Kulminacji",
+    "desc": "Wszystkie wątki zbiegają się w jednym, niesamowicie napiętym i emocjonalnym punkcie.",
+    "targetWeights": { "stressed": 3, "sad": 2 },
+    "genreId": 8
+  },
+  {
+    "name": "Nieziemski Romans",
+    "desc": "Miłość między człowiekiem a kosmitą, pełna kulturowych nieporozumień.",
+    "targetWeights": { "romantic": 3, "bored": 2 },
+    "genreId": 22
+  },
+  {
+    "name": "Klątwa Rodowa",
+    "desc": "Mroczne sekrety przekazywane z pokolenia na pokolenie i walka z demonami przeszłości.",
+    "targetWeights": { "dark": 3, "sad": 2 },
+    "genreId": 14
+  },
+  {
+    "name": "Czysty Relaks",
+    "desc": "Brak głównego wątku fabularnego, liczy się tylko tu i teraz w przyjemnym klimacie.",
+    "targetWeights": { "stressed": 3 },
+    "genreId": 36
+  },
+  {
+    "name": "Epicki Turniej Sztuk Walki",
+    "desc": "Kolejne areny, coraz silniejsi przeciwnicy i spektakularne techniki wykończeniowe.",
+    "targetWeights": { "bored": 3, "happy": 1 },
+    "genreId": 1
+  },
+  {
+    "name": "Rozstanie na Zawsze",
+    "desc": "Gorzki koniec relacji, po którym nic już nigdy nie będzie takie samo.",
+    "targetWeights": { "sad": 3, "dark": 1 },
+    "genreId": 8
+  },
+  {
+    "name": "Umysł Mordercy",
+    "desc": "Wchodzenie w psychikę seryjnego zabójcy i próba zrozumienia jego motywów.",
+    "targetWeights": { "dark": 3, "bored": 1 },
+    "genreId": 40
+  },
+  {
+    "name": "Szkolne Wycieczki",
+    "desc": "Zwiedzanie Kioto, nocne rozmowy w pokojach i budowanie przyjaźni na całe życie.",
+    "targetWeights": { "happy": 3, "stressed": 2 },
+    "genreId": 36
+  },
+  {
+    "name": "Zakazana Magia",
+    "desc": "Użycie czarów wymagające zapłaty we własnej krwi lub wspomnieniach.",
+    "targetWeights": { "dark": 3, "stressed": 2 },
+    "genreId": 10
+  },
+  {
+    "name": "Złote Serce Delikwenta",
+    "desc": "Szkolny chuligan okazuje się mieć miękkie serce i potajemnie opiekuje się porzuconymi kotami.",
+    "targetWeights": { "happy": 2, "romantic": 2 },
+    "genreId": 4
+  },
+  {
+    "name": "Ciężar Odpowiedzialności",
+    "desc": "Młody lider zmuszony do podejmowania decyzji decydujących o życiu podwładnych.",
+    "targetWeights": { "stressed": 3, "sad": 2 },
+    "genreId": 8
+  },
+  {
+    "name": "Tajemnica Zniknięcia",
+    "desc": "Ktoś rozpływa się w powietrzu, a pozostali próbują złożyć poszlaki w całość.",
+    "targetWeights": { "bored": 3, "dark": 2 },
+    "genreId": 7
+  },
+  {
+    "name": "Romantyczny Spacer",
+    "desc": "Długie ujęcia, spokojne rozmowy i niespiesznie rodzące się zaufanie.",
+    "targetWeights": { "romantic": 3, "stressed": 3 },
+    "genreId": 22
+  },
+  {
+    "name": "Demon wewnątrz Mnie",
+    "desc": "Bohater walczący z potężną, mroczną siłą zapieczętowaną w jego własnym ciele.",
+    "targetWeights": { "dark": 3, "bored": 2 },
+    "genreId": 1
+  },
+  {
+    "name": "Sielanka i Magia",
+    "desc": "Czarownica prowadząca spokojną aptekę w małym, urokliwym miasteczku.",
+    "targetWeights": { "stressed": 3, "happy": 2 },
+    "genreId": 36
+  },
+  {
+    "name": "Zdrada Najbliższych",
+    "desc": "Cios w plecy od osoby, której ufało się bezgranicznie. Gniew i ból.",
+    "targetWeights": { "sad": 3, "dark": 3 },
+    "genreId": 8
+  },
+  {
+    "name": "Wirtualna Pułapka",
+    "desc": "Gracze uwięzieni w grze MMO, gdzie śmierć awatara oznacza realny zgon.",
+    "targetWeights": { "bored": 3, "stressed": 2 },
+    "genreId": 1
+  },
+  {
+    "name": "Biurokracja i Demony",
+    "desc": "Czarna komedia o urzędnikach w zaświatach próbujących ogarnąć chaos piekieł.",
+    "targetWeights": { "happy": 3, "dark": 2 },
+    "genreId": 4
+  },
+  {
+    "name": "Ostatni Bastion Ludzkości",
+    "desc": "Oblegane miasto i desperacka obrona przed przeważającymi siłami potworów.",
+    "targetWeights": { "stressed": 3, "dark": 2, "bored": 2 },
+    "genreId": 1
+  },
+  {
+    "name": "Słodkie Niezręczności",
+    "desc": "Bohaterowie tak nieśmiali, że wyznanie miłości zajmuje im kilka sezonów.",
+    "targetWeights": { "romantic": 3, "stressed": 1 },
+    "genreId": 22
+  },
+  {
+    "name": "Koniec Świata w Spokoju",
+    "desc": "Melancholijna podróż przez opustoszałą planetę, akceptacja nieuchronnego końca.",
+    "targetWeights": { "sad": 3, "stressed": 3, "dark": 1 },
+    "genreId": 36
+  },
+  {
+    "name": "Taktyka i Mechy",
+    "desc": "Realistyczne podejście do walk robotów, logistyka, kończąca się amunicja i błoto.",
+    "targetWeights": { "bored": 3, "stressed": 2 },
+    "genreId": 18
+  },
+  {
+    "name": "Złodziej Serc",
+    "desc": "Charyzmatyczny złodziej dżentelmen kradnie skarby i uwodzi piękne kobiety.",
+    "targetWeights": { "bored": 3, "romantic": 2 },
+    "genreId": 1
+  },
+  {
+    "name": "Paranoja i Złudzenia",
+    "desc": "Granica między rzeczywistością a halucynacją zaciera się całkowicie.",
+    "targetWeights": { "dark": 3, "stressed": 3 },
+    "genreId": 40
+  },
+  {
+    "name": "Muzyczny Idol",
+    "desc": "Droga na szczyt list przebojów, blask fleszy i pot i łzy na salach treningowych.",
+    "targetWeights": { "happy": 3, "bored": 2 },
+    "genreId": 6
+  },
+  {
+    "name": "Zawiść i Rywalizacja",
+    "desc": "Toksyczne relacje w świecie sztuki lub sportu, dążenie do perfekcji za wszelką cenę.",
+    "targetWeights": { "stressed": 3, "dark": 2, "sad": 1 },
+    "genreId": 8
+  }
+]
