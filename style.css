@@ -2,6 +2,7 @@
     --bg-color: #1a1a2e;
     --card-bg: #16213e;
     --accent-color: #e94560;
+    --trailer-color: #ff0000;
     --text-color: #ededed;
     --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
@@ -59,22 +60,36 @@ header p {
     transform: translateY(-2px);
 }
 
-/* Ładowanie */
+/* AI Loader */
 #loader {
-    font-size: 1.2rem;
+    margin: 3rem 0;
+    padding: 2rem;
+    background-color: rgba(22, 33, 62, 0.5);
+    border-radius: 12px;
+    border: 1px dashed var(--accent-color);
+}
+
+.ai-thinking {
+    font-size: 1.4rem;
+    font-weight: bold;
     color: var(--accent-color);
-    margin: 2rem 0;
-    animation: pulse 1.5s infinite;
+    margin-bottom: 0.5rem;
+    animation: pulse 1.2s infinite;
+}
+
+.loader-subtext {
+    font-size: 0.9rem;
+    color: #a0a0a0;
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* Wyniki */
 .results-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     text-align: left;
 }
@@ -90,7 +105,7 @@ header p {
 }
 
 .anime-card:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
 .anime-card img {
@@ -108,7 +123,7 @@ header p {
 }
 
 .anime-title {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     margin: 0 0 0.5rem 0;
 }
@@ -127,28 +142,41 @@ header p {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.anime-link {
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: white;
+/* Przyciski w karcie */
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.anime-link, .trailer-link {
+    flex: 1;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem;
     border-radius: 6px;
     text-align: center;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     transition: opacity 0.2s;
+    color: white;
 }
 
-.anime-link:hover {
-    opacity: 0.9;
+.anime-link {
+    background-color: var(--accent-color);
+}
+
+.trailer-link {
+    background-color: var(--trailer-color);
+}
+
+.anime-link:hover, .trailer-link:hover {
+    opacity: 0.85;
 }
 
 @keyframes pulse {
-    0% { opacity: 0.6; }
-    50% { opacity: 1; }
-    100% { opacity: 0.6; }
+    0% { opacity: 0.4; transform: scale(0.99); }
+    50% { opacity: 1; transform: scale(1.01); }
+    100% { opacity: 0.4; transform: scale(0.99); }
 }
