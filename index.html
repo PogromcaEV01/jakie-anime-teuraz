@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Mood Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Anime Mood Tracker 🌸</h1>
+            <p>Jak się dzisiaj czujesz? Wybierz swój nastrój, a znajdziemy anime idealne na tę chwilę!</p>
+        </header>
+
+        <section class="mood-selector">
+            <button class="mood-btn" data-mood="happy">😄 Radosny</button>
+            <button class="mood-btn" data-mood="sad">😢 Smutny</button>
+            <button class="mood-btn" data-mood="bored">🥱 Znudzony</button>
+            <button class="mood-btn" data-mood="stressed">🤯 Zestresowany</button>
+            <button class="mood-btn" data-mood="romantic">❤️ Romantyczny</button>
+            <button class="mood-btn" data-mood="dark">🖤 Mroczny</button>
+        </section>
+
+        <main>
+            <div id="loader" class="hidden">Szukam idealnego anime... 🍜</div>
+            <div id="results" class="results-grid"></div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
