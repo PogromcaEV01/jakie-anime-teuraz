@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Mood Tracker - Twój Asystent AI</title>
+    <title>Zaawansowany Anime Mood Tracker AI</title>
     <style>
-        /* CSS - Stylistyka strony */
         :root {
             --bg-color: #0f0f1b;
             --card-bg: #1a1a2e;
+            --slot-bg: #161626;
             --accent-color: #e94560;
+            --accent-hover: #ff5270;
             --trailer-color: #ff4d4d;
             --text-color: #ededed;
+            --border-color: #2d2d44;
             --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
@@ -32,11 +34,11 @@
         }
 
         header {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         header h1 {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             color: var(--accent-color);
             margin-bottom: 0.5rem;
             text-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
@@ -44,86 +46,134 @@
 
         header p {
             color: #8892b0;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
-        /* Przyciski Mood */
-        .mood-selector {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            margin-bottom: 3rem;
+        /* Sekcja Slotów */
+        .slots-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .slot-box {
+            background-color: var(--slot-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .slot-box h2 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+
+        .slot-weight {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+
+        .mood-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
         }
 
         .mood-btn {
             background-color: var(--card-bg);
             color: var(--text-color);
-            border: 1px solid #2d2d44;
-            padding: 1rem 1.8rem;
-            font-size: 1.05rem;
-            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            padding: 0.8rem 0.5rem;
+            font-size: 0.9rem;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
         }
 
         .mood-btn:hover {
             border-color: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(233, 69, 96, 0.2);
+            background-color: #1f1f35;
         }
 
-        .mood-btn:active {
-            transform: scale(0.95);
-        }
+        /* Aktywne stany dla poszczególnych slotów */
+        .slot-box[data-slot="1"] .mood-btn.active { background-color: #e94560; border-color: #e94560; color: white; font-weight: bold; }
+        .slot-box[data-slot="2"] .mood-btn.active { background-color: #d97706; border-color: #d97706; color: white; font-weight: bold; }
+        .slot-box[data-slot="3"] .mood-btn.active { background-color: #2563eb; border-color: #2563eb; color: white; font-weight: bold; }
 
-        .mood-btn.active {
+        /* Główny przycisk akcji */
+        .analyze-btn {
             background-color: var(--accent-color);
-            border-color: var(--accent-color);
             color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+            margin-bottom: 2rem;
         }
 
-        .mood-btn:disabled {
-            opacity: 0.6;
+        .analyze-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+        }
+
+        .analyze-btn:disabled {
+            background-color: #4a4a5a;
             cursor: not-allowed;
+            box-shadow: none;
             transform: none;
         }
 
-        /* Sekcja AI Thinking */
+        /* Loader AI */
         #loader {
-            margin: 4rem 0;
-            padding: 3rem;
+            margin: 2rem 0;
+            padding: 2.5rem;
             background: linear-gradient(145deg, #16213e, #1a1a2e);
-            border-radius: 20px;
-            border: 1px solid rgba(233, 69, 96, 0.2);
+            border-radius: 15px;
+            border: 1px dashed var(--accent-color);
         }
 
         .ai-pulse {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: var(--accent-color);
-            margin-bottom: 1rem;
-            animation: pulse 1.5s infinite;
+            margin-bottom: 0.5rem;
+            animation: pulse 1.2s infinite;
         }
 
-        .ai-subtext {
-            color: #a0a0a0;
-            font-style: italic;
+        .ai-subtext { color: #a0a0a0; font-size: 0.95rem; }
+
+        /* Wynikowy profil */
+        .profile-alert {
+            background: rgba(233, 69, 96, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 0 10px 10px 0;
+            text-align: left;
+            animation: fadeIn 0.5s ease;
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.5; transform: scale(0.98); }
-            50% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0.5; transform: scale(0.98); }
-        }
+        .profile-alert h3 { margin: 0 0 0.3rem 0; color: var(--accent-color); }
+        .profile-alert p { margin: 0; font-size: 0.95rem; color: #ccc; }
 
-        /* Grid z wynikami */
+        /* Wyniki Grid */
         .results-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
+            gap: 2rem;
             text-align: left;
         }
 
@@ -133,86 +183,34 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: transform 0.4s ease;
-            border: 1px solid #2d2d44;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
         }
 
         .anime-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-color: var(--accent-color);
         }
 
-        .anime-card img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-
-        .anime-content {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .anime-title {
-            font-size: 1.3rem;
-            margin: 0 0 0.5rem 0;
-            color: #fff;
-        }
-
-        .anime-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .score {
-            color: #ffc107;
-            font-weight: bold;
-            background: rgba(255, 193, 7, 0.1);
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        .synopsis {
-            font-size: 0.9rem;
-            color: #b0b0c0;
-            margin-bottom: 1.5rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .actions {
-            margin-top: auto;
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-link {
-            flex: 1;
-            text-align: center;
-            padding: 0.8rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: opacity 0.2s;
-        }
-
+        .anime-card img { width: 100%; height: 350px; object-fit: cover; }
+        .anime-content { padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .anime-title { font-size: 1.2rem; margin: 0 0 0.5rem 0; color: #fff; }
+        .anime-meta { display: flex; justify-content: space-between; margin-bottom: 0.8rem; font-size: 0.9rem; }
+        .score { color: #ffc107; font-weight: bold; }
+        .synopsis { font-size: 0.85rem; color: #b0b0c0; margin-bottom: 1.5rem; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+        .actions { margin-top: auto; display: flex; gap: 10px; }
+        .btn-link { flex: 1; text-align: center; padding: 0.6rem; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.85rem; transition: opacity 0.2s; }
         .mal-btn { background-color: var(--accent-color); color: white; }
         .trailer-btn { background-color: transparent; border: 1px solid var(--trailer-color); color: var(--trailer-color); }
-
-        .btn-link:hover { opacity: 0.8; }
+        .btn-link:hover { opacity: 0.85; }
 
         .hidden { display: none !important; }
 
-        @media (max-width: 600px) {
-            header h1 { font-size: 2rem; }
-            .mood-btn { width: 100%; }
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+
+        @media (max-width: 768px) {
+            .slots-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -220,121 +218,260 @@
 
     <div class="container">
         <header>
-            <h1>Anime Mood Tracker 🌸</h1>
-            <p>Sztuczna Inteligencja przeanalizuje Twój nastrój i dobierze idealne serie anime.</p>
+            <h1>Anime Mood Tracker AI 🧠</h1>
+            <p>Wybierz 3 nastroje. Algorytm obliczy ich wagi i dopasuje idealny profil anime.</p>
         </header>
 
-        <section class="mood-selector" id="moodSelector">
-            <button class="mood-btn" data-mood="happy">😊 Radosny / Chcę się śmiać</button>
-            <button class="mood-btn" data-mood="sad">😢 Smutny / Chcę wzruszeń</button>
-            <button class="mood-btn" data-mood="bored">🥱 Znudzony / Chcę akcji</button>
-            <button class="mood-btn" data-mood="stressed">🤯 Zestresowany / Chcę spokoju</button>
-            <button class="mood-btn" data-mood="romantic">❤️ Romantyczny</button>
-            <button class="mood-btn" data-mood="dark">🖤 Mroczny / Tajemniczy</button>
-        </section>
+        <div class="slots-container">
+            <div class="slot-box" data-slot="1">
+                <h2>Główny nastrój</h2>
+                <span class="slot-weight">Waga: Wysoka (x3)</span>
+                <div class="mood-grid">
+                    <button class="mood-btn" data-mood="happy">😄 Radosny</button>
+                    <button class="mood-btn" data-mood="sad">😢 Smutny</button>
+                    <button class="mood-btn" data-mood="bored">🥱 Znudzony</button>
+                    <button class="mood-btn" data-mood="stressed">🤯 Zestresowany</button>
+                    <button class="mood-btn" data-mood="romantic">❤️ Romantyczny</button>
+                    <button class="mood-btn" data-mood="dark">🖤 Mroczny</button>
+                </div>
+            </div>
+
+            <div class="slot-box" data-slot="2">
+                <h2>Poboczny nastrój</h2>
+                <span class="slot-weight">Waga: Średnia (x2)</span>
+                <div class="mood-grid">
+                    <button class="mood-btn" data-mood="happy">😄 Radosny</button>
+                    <button class="mood-btn" data-mood="sad">😢 Smutny</button>
+                    <button class="mood-btn" data-mood="bored">🥱 Znudzony</button>
+                    <button class="mood-btn" data-mood="stressed">🤯 Zestresowany</button>
+                    <button class="mood-btn" data-mood="romantic">❤️ Romantyczny</button>
+                    <button class="mood-btn" data-mood="dark">🖤 Mroczny</button>
+                </div>
+            </div>
+
+            <div class="slot-box" data-slot="3">
+                <h2>Dodatkowy akcent</h2>
+                <span class="slot-weight">Waga: Lekka (x1)</span>
+                <div class="mood-grid">
+                    <button class="mood-btn" data-mood="happy">😄 Radosny</button>
+                    <button class="mood-btn" data-mood="sad">😢 Smutny</button>
+                    <button class="mood-btn" data-mood="bored">🥱 Znudzony</button>
+                    <button class="mood-btn" data-mood="stressed">🤯 Zestresowany</button>
+                    <button class="mood-btn" data-mood="romantic">❤️ Romantyczny</button>
+                    <button class="mood-btn" data-mood="dark">🖤 Mroczny</button>
+                </div>
+            </div>
+        </div>
+
+        <button id="analyzeBtn" class="analyze-btn">Analizuj dopasowanie AI ✨</button>
 
         <main>
             <div id="loader" class="hidden">
-                <div class="ai-pulse">🧠 AI analizuje Twoją aurę...</div>
-                <div class="ai-subtext">Łączę się z bazą danych MyAnimeList, aby dopasować idealne parametry...</div>
+                <div class="ai-pulse">🧠 Obliczam wektor nastroju...</div>
+                <div class="ai-subtext">Porównuję wagi z matrycą profili psychologicznych i przeszukuję bazę danych.</div>
             </div>
 
-            <div id="results" class="results-grid">
-                </div>
+            <div id="profileResult" class="profile-alert hidden"></div>
+
+            <div id="results" class="results-grid"></div>
         </main>
     </div>
 
     <script>
-        // Konfiguracja Mood -> Gatunki MAL
-        const moodConfig = {
-            happy: [4],        // Comedy
-            sad: [8, 36],      // Drama, Slice of Life
-            bored: [1, 10, 24],// Action, Fantasy, Sci-Fi
-            stressed: [36, 46],// Slice of Life, Award Winning
-            romantic: [22],    // Romance
-            dark: [7, 14, 40]  // Mystery, Horror, Psychological
+        // --- STAN APLIKACJI ---
+        // Przechowujemy wybrane nastroje dla slotów 1, 2 i 3
+        const selectedMoods = {
+            1: null,
+            2: null,
+            3: null
         };
 
-        const moodButtons = document.querySelectorAll('.mood-btn');
-        const resultsContainer = document.getElementById('results');
+        // Wagi przypisane do slotów
+        const slotWeights = {
+            1: 3,
+            2: 2,
+            3: 1
+        };
+
+        // --- TABELA DOCELOWA MOODÓW Z WAGAMI (PROFILE) ---
+        // Algorytm oceni dopasowanie każdego profilu do wyborów użytkownika
+        const profilesTable = [
+            {
+                name: "Czysta Komedia i Odprężenie",
+                desc: "Idealne na poprawę humoru i głośny śmiech po ciężkim dniu.",
+                targetWeights: { happy: 3, stressed: 2 },
+                genreId: 4 // Comedy
+            },
+            {
+                name: "Zastrzyk Adrenaliny",
+                desc: "Czysta akcja, która nie pozwoli Ci się nudzić ani przez sekundę.",
+                targetWeights: { bored: 3, happy: 1 },
+                genreId: 1 // Action
+            },
+            {
+                name: "Głęboki Melodramat",
+                desc: "Przygotuj chusteczki. Historie, które poruszają najgłębsze struny duszy.",
+                targetWeights: { sad: 3, romantic: 2 },
+                genreId: 8 // Drama
+            },
+            {
+                name: "Psychologiczny Labirynt",
+                desc: "Mroczne tajemnice i gęsty klimat, który zmusza do myślenia.",
+                targetWeights: { dark: 3, bored: 1, sad: 1 },
+                genreId: 40 // Psychological
+            },
+            {
+                name: "Uskrzydlający Romans",
+                desc: "Motyle w brzuchu i urocze relacje, które rozgrzeją Twoje serce.",
+                targetWeights: { romantic: 3, happy: 2 },
+                genreId: 22 // Romance
+            },
+            {
+                name: "Mroczny Romans / Tajemnica",
+                desc: "Miłość przeplatana z niebezpieczeństwem i nadprzyrodzoną aurą.",
+                targetWeights: { romantic: 3, dark: 3 },
+                genreId: 7 // Mystery (często łączy się z romansem w takich miksach)
+            },
+            {
+                name: "Okruchy Życia (Złapanie Oddechu)",
+                desc: "Spokojne, powolne tempo (Iyashikei), idealne na zszargane nerwy.",
+                targetWeights: { stressed: 3, sad: 1 },
+                genreId: 36 // Slice of Life
+            },
+            {
+                name: "Epicka Przygoda Sci-Fi",
+                desc: "Ucieczka od rzeczywistości w nieznane, fascynujące światy.",
+                targetWeights: { bored: 2, dark: 1, stressed: 1 },
+                genreId: 24 // Sci-Fi
+            }
+        ];
+
+        // --- OBSŁUGA INTERFEJSU ---
+        const slotBoxes = document.querySelectorAll('.slot-box');
+        const analyzeBtn = document.getElementById('analyzeBtn');
         const loader = document.getElementById('loader');
+        const profileResult = document.getElementById('profileResult');
+        const resultsContainer = document.getElementById('results');
         let isProcessing = false;
 
-        moodButtons.forEach(button => {
-            button.addEventListener('click', async () => {
-                if (isProcessing) return;
+        // Obsługa kliknięć w nastroje wewnątrz slotów
+        slotBoxes.forEach(box => {
+            const slotId = box.dataset.slot;
+            const buttons = box.querySelectorAll('.mood-btn');
 
-                // Stylistyka przycisków
-                moodButtons.forEach(b => b.classList.remove('active'));
-                button.classList.add('active');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (isProcessing) return;
 
-                const mood = button.dataset.mood;
-                await startRecommendationEngine(mood);
+                    // Usuń klasę active z innych w tym slocie
+                    buttons.forEach(b => b.classList.remove('active'));
+                    // Dodaj do klikniętego
+                    btn.classList.add('active');
+
+                    // Zapisz stan
+                    selectedMoods[slotId] = btn.dataset.mood;
+                });
             });
         });
 
-        async function startRecommendationEngine(mood) {
+        // GŁÓWNY ALGORYTM PO KLIKNIĘCIU "ANALIZUJ"
+        analyzeBtn.addEventListener('click', async () => {
+            // Sprawdzamy czy użytkownik wybrał nastroje we wszystkich 3 slotach
+            if (!selectedMoods[1] || !selectedMoods[2] || !selectedMoods[3]) {
+                alert("Proszę wybrać nastrój w każdym z trzech slotów dla dokładnych obliczeń!");
+                return;
+            }
+
             isProcessing = true;
-            toggleButtons(true);
-            
-            // Czyścimy poprzednie wyniki i pokazujemy "Myślenie AI"
+            analyzeBtn.disabled = true;
+            profileResult.classList.add('hidden');
             resultsContainer.innerHTML = '';
             loader.classList.remove('hidden');
 
-            // --- SZTUCZNE OPÓŹNIENIE 3 SEKUNDY ---
+            // 1. OBLICZANIE WEKTORA UŻYTKOWNIKA (Sumowanie wag)
+            // Tworzymy obiekt z początkowymi wagami 0
+            const userVector = { happy: 0, sad: 0, bored: 0, stressed: 0, romantic: 0, dark: 0 };
+            
+            // Dodajemy wagi ze slotów
+            userVector[selectedMoods[1]] += slotWeights[1]; // +3
+            userVector[selectedMoods[2]] += slotWeights[2]; // +2
+            userVector[selectedMoods[3]] += slotWeights[3]; // +1
+
+            // 2. PORÓWNANIE Z TABELĄ PROFILI (Algorytm podobieństwa - Iloczyn skalarny)
+            let bestProfile = profilesTable[0];
+            let maxSimilarityScore = -1;
+
+            profilesTable.forEach(profile => {
+                let currentScore = 0;
+                // Liczymy pokrycie wag profilu z wagami wyliczonymi u użytkownika
+                for (const mood in profile.targetWeights) {
+                    currentScore += (userVector[mood] || 0) * profile.targetWeights[mood];
+                }
+
+                // Szukamy profilu z najwyższym wynikiem
+                if (currentScore > maxSimilarityScore) {
+                    maxSimilarityScore = currentScore;
+                    bestProfile = profile;
+                }
+            });
+
+            // --- SYMULACJA GŁĘBOKIEJ ANALIZY AI (3 sekundy) ---
             await new Promise(resolve => setTimeout(resolve, 3000));
 
-            const genres = moodConfig[mood];
-            const randomGenre = genres[Math.floor(Math.random() * genres.length)];
-            
-            // Jikan API v4 Search
-            const url = `https://api.jikan.moe/v4/anime?genres=${randomGenre}&order_by=score&sort=desc&sfw=true&limit=20`;
+            // 3. POBIERANIE DANYCH Z JIKAN API DLA ZWYCIĘSKIEGO GATUNKU
+            const url = `https://api.jikan.moe/v4/anime?genres=${bestProfile.genreId}&order_by=score&sort=desc&sfw=true&limit=20`;
 
             try {
                 const response = await fetch(url);
                 const data = await response.json();
-                
-                if (data.data) {
-                    // Losujemy 3 anime z top 20 wyników
+
+                if (data.data && data.data.length > 0) {
+                    // Pokaż wykryty profil
+                    profileResult.innerHTML = `
+                        <h3>Wykryty profil: ${bestProfile.name}</h3>
+                        <p>${bestProfile.desc}</p>
+                    `;
+                    profileResult.classList.remove('hidden');
+
+                    // Losowanie 3 z top 20
                     const shuffled = data.data.sort(() => 0.5 - Math.random());
-                    const selection = shuffled.slice(0, 3);
-                    renderAnime(selection);
+                    renderResults(shuffled.slice(0, 3));
+                } else {
+                    throw new Error("Brak wyników");
                 }
             } catch (error) {
-                console.error("Błąd API:", error);
-                resultsContainer.innerHTML = "<p>Wystąpił problem z połączeniem z AI. Spróbuj za chwilę.</p>";
+                console.error("API Error:", error);
+                resultsContainer.innerHTML = '<p style="color: #ff4d4d;">Błąd połączenia z bazą danych. Spróbuj ponownie.</p>';
             } finally {
                 loader.classList.add('hidden');
                 isProcessing = false;
-                toggleButtons(false);
+                analyzeBtn.disabled = false;
             }
-        }
+        });
 
-        function toggleButtons(disabled) {
-            moodButtons.forEach(b => b.disabled = disabled);
-        }
-
-        function renderAnime(list) {
+        // RENDEROWANIE KART ANIME
+        function renderResults(animeList) {
             resultsContainer.innerHTML = '';
-            
-            list.forEach(anime => {
-                const trailerBtn = anime.trailer?.url 
+            animeList.forEach(anime => {
+                const trailerHtml = anime.trailer?.url 
                     ? `<a href="${anime.trailer.url}" target="_blank" class="btn-link trailer-btn">🎬 Zwiastun</a>` 
                     : '';
 
+                const cardUrl = anime.images?.jpg?.large_image_url || 'https://via.placeholder.com/300x400?text=Brak+Okładki';
+
                 const html = `
                     <div class="anime-card">
-                        <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}" loading="lazy">
+                        <img src="${cardUrl}" alt="${anime.title}" loading="lazy">
                         <div class="anime-content">
                             <h3 class="anime-title">${anime.title}</h3>
                             <div class="anime-meta">
-                                <span class="score">⭐ ${anime.score || 'N/A'}</span>
-                                <span style="font-size: 0.8rem; color: #888;">${anime.type}</span>
+                                <span class="score">⭐ ${anime.score || 'Brak'} / 10</span>
+                                <span>${anime.year || ''} ${anime.type || ''}</span>
                             </div>
-                            <p class="synopsis">${anime.synopsis || 'Brak opisu dla tej serii.'}</p>
+                            <p class="synopsis">${anime.synopsis || 'Brak opisu w bazie danych.'}</p>
                             <div class="actions">
-                                <a href="${anime.url}" target="_blank" class="btn-link mal-btn">Szczegóły MAL</a>
-                                ${trailerBtn}
+                                <a href="${anime.url}" target="_blank" class="btn-link mal-btn">MyAnimeList</a>
+                                ${trailerHtml}
                             </div>
                         </div>
                     </div>
@@ -343,6 +480,5 @@
             });
         }
     </script>
-
 </body>
 </html>
