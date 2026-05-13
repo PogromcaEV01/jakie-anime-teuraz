@@ -293,59 +293,6 @@
             3: 1
         };
 
-        // --- TABELA DOCELOWA MOODÓW Z WAGAMI (PROFILE) ---
-        // Algorytm oceni dopasowanie każdego profilu do wyborów użytkownika
-        const profilesTable = [
-            {
-                name: "Czysta Komedia i Odprężenie",
-                desc: "Idealne na poprawę humoru i głośny śmiech po ciężkim dniu.",
-                targetWeights: { happy: 3, stressed: 2 },
-                genreId: 4 // Comedy
-            },
-            {
-                name: "Zastrzyk Adrenaliny",
-                desc: "Czysta akcja, która nie pozwoli Ci się nudzić ani przez sekundę.",
-                targetWeights: { bored: 3, happy: 1 },
-                genreId: 1 // Action
-            },
-            {
-                name: "Głęboki Melodramat",
-                desc: "Przygotuj chusteczki. Historie, które poruszają najgłębsze struny duszy.",
-                targetWeights: { sad: 3, romantic: 2 },
-                genreId: 8 // Drama
-            },
-            {
-                name: "Psychologiczny Labirynt",
-                desc: "Mroczne tajemnice i gęsty klimat, który zmusza do myślenia.",
-                targetWeights: { dark: 3, bored: 1, sad: 1 },
-                genreId: 40 // Psychological
-            },
-            {
-                name: "Uskrzydlający Romans",
-                desc: "Motyle w brzuchu i urocze relacje, które rozgrzeją Twoje serce.",
-                targetWeights: { romantic: 3, happy: 2 },
-                genreId: 22 // Romance
-            },
-            {
-                name: "Mroczny Romans / Tajemnica",
-                desc: "Miłość przeplatana z niebezpieczeństwem i nadprzyrodzoną aurą.",
-                targetWeights: { romantic: 3, dark: 3 },
-                genreId: 7 // Mystery (często łączy się z romansem w takich miksach)
-            },
-            {
-                name: "Okruchy Życia (Złapanie Oddechu)",
-                desc: "Spokojne, powolne tempo (Iyashikei), idealne na zszargane nerwy.",
-                targetWeights: { stressed: 3, sad: 1 },
-                genreId: 36 // Slice of Life
-            },
-            {
-                name: "Epicka Przygoda Sci-Fi",
-                desc: "Ucieczka od rzeczywistości w nieznane, fascynujące światy.",
-                targetWeights: { bored: 2, dark: 1, stressed: 1 },
-                genreId: 24 // Sci-Fi
-            }
-        ];
-
         // --- OBSŁUGA INTERFEJSU ---
         const slotBoxes = document.querySelectorAll('.slot-box');
         const analyzeBtn = document.getElementById('analyzeBtn');
