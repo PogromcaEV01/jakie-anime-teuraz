@@ -3,34 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Mood Tracker</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Anime Mood Tracker - Twój Asystent AI</title>
+    <style>
+        /* CSS - Stylistyka strony */
+        :root {
+            --bg-color: #0f0f1b;
+            --card-bg: #1a1a2e;
+            --accent-color: #e94560;
+            --trailer-color: #ff4d4d;
+            --text-color: #ededed;
+            --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 3rem;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
+        }
+
+        header p {
+            color: #8892b0;
+            font-size: 1.1rem;
+        }
+
+        /* Przyciski Mood */
+        .mood-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .mood-btn {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid #2d2d44;
+            padding: 1rem 1.8rem;
+            font-size: 1.05rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .mood-btn:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(233, 69, 96, 0.2);
+        }
+
+        .mood-btn:active {
+            transform: scale(0.95);
+        }
+
+        .mood-btn.active {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+
+        .mood-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Sekcja AI Thinking */
+        #loader {
+            margin: 4rem 0;
+            padding: 3rem;
+            background: linear-gradient(145deg, #16213e, #1a1a2e);
+            border-radius: 20px;
+            border: 1px solid rgba(233, 69, 96, 0.2);
+        }
+
+        .ai-pulse {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        .ai-subtext {
+            color: #a0a0a0;
+            font-style: italic;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.5; transform: scale(0.98); }
+        }
+
+        /* Grid z wynikami */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .anime-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s ease;
+            border: 1px solid #2d2d44;
+        }
+
+        .anime-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+        }
+
+        .anime-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .anime-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .anime-title {
+            font-size: 1.3rem;
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        .anime-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .score {
+            color: #ffc107;
+            font-weight: bold;
+            background: rgba(255, 193, 7, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .synopsis {
+            font-size: 0.9rem;
+            color: #b0b0c0;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .actions {
+            margin-top: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-link {
+            flex: 1;
+            text-align: center;
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .mal-btn { background-color: var(--accent-color); color: white; }
+        .trailer-btn { background-color: transparent; border: 1px solid var(--trailer-color); color: var(--trailer-color); }
+
+        .btn-link:hover { opacity: 0.8; }
+
+        .hidden { display: none !important; }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            .mood-btn { width: 100%; }
+        }
+    </style>
 </head>
 <body>
+
     <div class="container">
         <header>
             <h1>Anime Mood Tracker 🌸</h1>
-            <p>Jak się dzisiaj czujesz? Wybierz swój nastrój, a znajdziemy anime idealne na tę chwilę!</p>
+            <p>Sztuczna Inteligencja przeanalizuje Twój nastrój i dobierze idealne serie anime.</p>
         </header>
 
-        <section class="mood-selector">
-            <button class="mood-btn" data-mood="happy">😄 Radosny</button>
-            <button class="mood-btn" data-mood="sad">😢 Smutny</button>
-            <button class="mood-btn" data-mood="bored">🥱 Znudzony</button>
-            <button class="mood-btn" data-mood="stressed">🤯 Zestresowany</button>
+        <section class="mood-selector" id="moodSelector">
+            <button class="mood-btn" data-mood="happy">😊 Radosny / Chcę się śmiać</button>
+            <button class="mood-btn" data-mood="sad">😢 Smutny / Chcę wzruszeń</button>
+            <button class="mood-btn" data-mood="bored">🥱 Znudzony / Chcę akcji</button>
+            <button class="mood-btn" data-mood="stressed">🤯 Zestresowany / Chcę spokoju</button>
             <button class="mood-btn" data-mood="romantic">❤️ Romantyczny</button>
-            <button class="mood-btn" data-mood="dark">🖤 Mroczny</button>
+            <button class="mood-btn" data-mood="dark">🖤 Mroczny / Tajemniczy</button>
         </section>
 
         <main>
             <div id="loader" class="hidden">
-                <div class="ai-thinking">🧠 AI głęboko analizuje Twoją aurę...</div>
-                <div class="loader-subtext">Przeszukuję bazę tysięcy anime w poszukiwaniu idealnego dopasowania</div>
+                <div class="ai-pulse">🧠 AI analizuje Twoją aurę...</div>
+                <div class="ai-subtext">Łączę się z bazą danych MyAnimeList, aby dopasować idealne parametry...</div>
             </div>
-            <div id="results" class="results-grid"></div>
+
+            <div id="results" class="results-grid">
+                </div>
         </main>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Konfiguracja Mood -> Gatunki MAL
+        const moodConfig = {
+            happy: [4],        // Comedy
+            sad: [8, 36],      // Drama, Slice of Life
+            bored: [1, 10, 24],// Action, Fantasy, Sci-Fi
+            stressed: [36, 46],// Slice of Life, Award Winning
+            romantic: [22],    // Romance
+            dark: [7, 14, 40]  // Mystery, Horror, Psychological
+        };
+
+        const moodButtons = document.querySelectorAll('.mood-btn');
+        const resultsContainer = document.getElementById('results');
+        const loader = document.getElementById('loader');
+        let isProcessing = false;
+
+        moodButtons.forEach(button => {
+            button.addEventListener('click', async () => {
+                if (isProcessing) return;
+
+                // Stylistyka przycisków
+                moodButtons.forEach(b => b.classList.remove('active'));
+                button.classList.add('active');
+
+                const mood = button.dataset.mood;
+                await startRecommendationEngine(mood);
+            });
+        });
+
+        async function startRecommendationEngine(mood) {
+            isProcessing = true;
+            toggleButtons(true);
+            
+            // Czyścimy poprzednie wyniki i pokazujemy "Myślenie AI"
+            resultsContainer.innerHTML = '';
+            loader.classList.remove('hidden');
+
+            // --- SZTUCZNE OPÓŹNIENIE 3 SEKUNDY ---
+            await new Promise(resolve => setTimeout(resolve, 3000));
+
+            const genres = moodConfig[mood];
+            const randomGenre = genres[Math.floor(Math.random() * genres.length)];
+            
+            // Jikan API v4 Search
+            const url = `https://api.jikan.moe/v4/anime?genres=${randomGenre}&order_by=score&sort=desc&sfw=true&limit=20`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.data) {
+                    // Losujemy 3 anime z top 20 wyników
+                    const shuffled = data.data.sort(() => 0.5 - Math.random());
+                    const selection = shuffled.slice(0, 3);
+                    renderAnime(selection);
+                }
+            } catch (error) {
+                console.error("Błąd API:", error);
+                resultsContainer.innerHTML = "<p>Wystąpił problem z połączeniem z AI. Spróbuj za chwilę.</p>";
+            } finally {
+                loader.classList.add('hidden');
+                isProcessing = false;
+                toggleButtons(false);
+            }
+        }
+
+        function toggleButtons(disabled) {
+            moodButtons.forEach(b => b.disabled = disabled);
+        }
+
+        function renderAnime(list) {
+            resultsContainer.innerHTML = '';
+            
+            list.forEach(anime => {
+                const trailerBtn = anime.trailer?.url 
+                    ? `<a href="${anime.trailer.url}" target="_blank" class="btn-link trailer-btn">🎬 Zwiastun</a>` 
+                    : '';
+
+                const html = `
+                    <div class="anime-card">
+                        <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}" loading="lazy">
+                        <div class="anime-content">
+                            <h3 class="anime-title">${anime.title}</h3>
+                            <div class="anime-meta">
+                                <span class="score">⭐ ${anime.score || 'N/A'}</span>
+                                <span style="font-size: 0.8rem; color: #888;">${anime.type}</span>
+                            </div>
+                            <p class="synopsis">${anime.synopsis || 'Brak opisu dla tej serii.'}</p>
+                            <div class="actions">
+                                <a href="${anime.url}" target="_blank" class="btn-link mal-btn">Szczegóły MAL</a>
+                                ${trailerBtn}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                resultsContainer.innerHTML += html;
+            });
+        }
+    </script>
+
 </body>
 </html>
